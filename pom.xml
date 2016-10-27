@@ -13,20 +13,10 @@
         <module>common</module>
     </modules>
     <properties>
-        <spring.boot.version>1.4.1.RELEASE</spring.boot.version>
+        <springframework.version>4.2.1.RELEASE</springframework.version>
+        <springframework.data.version>1.9.6.RELEASE</springframework.data.version>
+        <com.fasterxml.jackson.core.version>2.5.2</com.fasterxml.jackson.core.version>
     </properties>
-<!--    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-    </dependencies>-->
 
 
 </project>
