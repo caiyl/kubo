@@ -1,8 +1,245 @@
-<html>
-<script src="js/jquery-3.1.1.js"></script>
-<script src="js/index.js"></script>
-<body>
-<h2>Hello Worlda!</h2>
-<input type="button" value="click" onclick="login()"/>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dashboard | Dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="Thu, 19 Nov 1900 08:52:00 GMT">
+    <!--Loading bootstrap css-->
+    <link type="text/css" rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/orange-blue.css">
+    <link type="text/css" rel="stylesheet" href="metismenu/dist/metisMenu.min.css">
+    <link type="text/css" rel="stylesheet" href="Font-Awesome-master/css/font-awesome.css">
+
+</head>
+
+<body ng-app="app">
+
+<!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
+<!--END BACK TO TOP-->
+<!--BEGIN TOPBAR-->
+    <nav id="topbar" role="navigation" style="margin-bottom: 0; z-index: 2;" class="navbar navbar-default navbar-static-top">
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button><a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">µAdmin</span><span style="display: none" class="logo-text-icon">µ</span></a>
+        </div>
+        <div class="topbar-main"><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Dashboard11</a>
+                </li>
+                <li><a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle">Layouts
+                    &nbsp;<i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="layout-left-sidebar.html">Left Sidebar</a>
+                        </li>
+                        <li><a href="layout-right-sidebar.html">Right Sidebar</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="mega-menu-dropdown"><a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle">UI Elements
+                    &nbsp;<i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="mega-menu-content">
+                                <div class="row">
+                                    <ul class="col-md-4 mega-menu-submenu">
+                                        <li>
+                                            <h3>Neque porro quisquam</h3>
+                                        </li>
+
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar navbar-top-links navbar-right mbn">
+
+
+                <li class="dropdown"><a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-tasks fa-fw"></i><span class="badge badge-yellow">8</span></a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <p>You have 14 pending tasks</p>
+                        </li>
+                        <li class="last"><a href="page-blog-item.html" target="_blank">See all tasks</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown topbar-user">
+                    <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">John Doe</span>&nbsp;<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user pull-right">
+                        <li><a href="extra-profile.html"><i class="fa fa-user"></i>My Profile</a>
+                        </li>
+                        <li><a href="page-calendar.html"><i class="fa fa-calendar"></i>My Calendar</a>
+                        </li>
+                        <li><a href="email-inbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="topbar-chat" class="hidden-xs"><a href="javascript:void(0)" class="btn-chat"><i class="fa fa-comments"></i><span class="badge badge-info">3</span></a>
+                </li>
+                <li class="dropdown hidden-xs">
+                    <!--BEGIN THEME SETTING--><a id="theme-setting" href="javascript:;" data-hover="dropdown" data-step="1" data-intro="&lt;b&gt;Header&lt;/b&gt;, &lt;b&gt;sidebar&lt;/b&gt;, &lt;b&gt;border style&lt;/b&gt; and &lt;b&gt;color&lt;/b&gt;, all of them can change for you to create the best" data-position="left" class="dropdown-toggle"><i class="fa fa-cogs"></i></a>
+                    <ul class="dropdown-menu dropdown-theme-setting pull-right">
+                        <li>
+                            <h4 class="mtn">Theme Styles</h4>
+                            <select id="list-style" class="form-control">
+                                <option value="style1">Flat Squared style</option>
+                                <option value="style2">Flat Rounded style</option>
+                                <option value="style3">Flat Border style</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <!--END THEME SETTING-->
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--BEGIN MODAL CONFIG PORTLET-->
+    <div id="modal-config" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend et nisl eget porta. Curabitur elementum sem molestie nisl varius, eget tempus odio molestie. Nunc vehicula sem arcu, eu pulvinar neque cursus ac. Aliquam ultricies lobortis magna et aliquam. Vestibulum egestas eu urna sed ultricies. Nullam pulvinar dolor vitae quam dictum condimentum. Integer a sodales elit, eu pulvinar leo. Nunc nec aliquam nisi, a mollis neque. Ut vel felis quis tellus hendrerit placerat. Vivamus vel nisl non magna feugiat dignissim sed ut nibh. Nulla elementum, est a pretium hendrerit, arcu risus luctus augue, mattis aliquet orci ligula eget massa. Sed ut ultricies felis.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END MODAL CONFIG PORTLET-->
+</div>
+    <div id="wrapper" >
+    <!--BEGIN SIDEBAR MENU-->
+    <nav id="sidebar" role="navigation" class="navbar-default navbar-static-side">
+        <div class="sidebar-collapse menu-scroll">
+            <ul id="side-menu" class="nav metismenu" >
+                <li class="user-panel">
+                    <div class="thumb"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" alt="" class="img-circle" />
+                    </div>
+                    <div class="info">
+                        <p>John Doe</p>
+                        <ul class="list-inline list-unstyled">
+                            <li><a href="extra-profile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a>
+                            </li>
+                            <li><a href="email-inbox.html" data-hover="tooltip" title="Mail"><i class="fa fa-envelope"></i></a>
+                            </li>
+                            <li><a href="#" data-hover="tooltip" title="Setting" data-toggle="modal" data-target="#modal-config"><i class="fa fa-cog"></i></a>
+                            </li>
+                            <li><a href="extra-signin.html" data-hover="tooltip" title="Logout"><i class="fa fa-sign-out"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+
+
+                <li><a href="#"><i class="fa fa-th-list fa-fw"><div class="icon-bg bg-blue"></div></i><span class="menu-title">Tables</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a ><i class="fa fa-th-large"></i><span class="submenu-title">Basic Tables</span></a>
+                        </li>
+                        <li><a href="table-responsive.html"><i class="fa fa-tablet"></i><span class="submenu-title">Responsive Tables</span></a>
+                        </li>
+                        <li><a href="table-action.html"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">Action Tables</span></a>
+                        </li>
+                        <li><a href="table-filter.html"><i class="fa fa-filter"></i><span class="submenu-title">Filter Tables</span></a>
+                        </li>
+                        <li><a href="table-advanced.html"><i class="fa fa-indent"></i><span class="submenu-title">Advanced Tables</span></a>
+                        </li>
+                        <li><a href="table-export.html"><i class="fa fa-paperclip"></i><span class="submenu-title">Table Export</span><span class="label label-yellow">v2.1</span></a>
+                        </li>
+                        <li></li>
+                        <li><a href="table-editable.html"><i class="fa fa-edit"></i><span class="submenu-title">Jeditable</span><span class="label label-blue">v2.0        </span></a>
+                        </li>
+                        <li><a href="table-datatables.html"><i class="fa fa-list-alt"></i><span class="submenu-title">DataTables</span><span class="label label-pink">v2.0</span></a>
+                        </li>
+                        <li><a href="table-sample.html"><i class="fa fa-table"></i><span class="submenu-title">Sample Tables</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a href="#"><i class="fa fa-file-o fa-fw"><div class="icon-bg bg-yellow"></div></i><span class="menu-title">Pages</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="page-gallery.html"><i class="fa fa-suitcase"></i><span class="submenu-title">Gallery</span></a>
+                        </li>
+                        <li><a href="page-timeline.html"><i class="fa fa-steam"></i><span class="submenu-title">Timeline</span></a>
+                        </li>
+                        <li><a href="page-blog.html"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">Blog</span></a>
+                        </li>
+                        <li><a href="page-blog-item.html"><i class="fa fa-chain"></i><span class="submenu-title">Blog Item</span></a>
+                        </li>
+                        <li><a href="page-about.html"><i class="fa fa-group"></i><span class="submenu-title">About Us</span></a>
+                        </li>
+                        <li><a href="page-contact.html"><i class="fa fa-send-o"></i><span class="submenu-title">Contact Us</span></a>
+                        </li>
+                        <li><a href="page-calendar.html"><i class="fa fa-calendar"></i><span class="submenu-title">Full Calendar</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <!--END SIDEBAR MENU-->
+    <!--BEGIN CHAT FORM-->
+
+    <!--END CHAT FORM-->
+    <!--BEGIN PAGE WRAPPER-->
+    <div id="page-wrapper">
+        <!--BEGIN TITLE & BREADCRUMB PAGE-->
+        <!--END TITLE & BREADCRUMB PAGE-->
+        <!--BEGIN CONTENT-->
+        <div class="page-content" ui-view>
+            context
+        </div>
+        <!--END CONTENT-->
+    </div>
+    <!--BEGIN FOOTER-->
+    <div id="footer">
+        <div class="copyright">2014 © &mu;Admin - Responsive Multi-Style Admin Template</div>
+    </div>
+    <!--END FOOTER-->
+    <!--END PAGE WRAPPER-->
+        <script src="js/jquery-3.1.1.js"></script>
+        <script src="js/angular/angular.min.js"></script>
+        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <script src="metismenu/dist/metisMenu.min.js"></script>
+
+        <script src="js/ui-bootstrap/bootstrap-select.js"></script>
+        <script src="js/ui-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="js/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="js/angular/angular-dialogs.min.js"></script>
+        <script src="js/angular-ocLazyLoad/ocLazyLoad.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/controller.js"></script>
+        <script src="js/directives/loading.js"></script>
+        <script src="js/directives/skin.js"></script>
+        <script src="js/directives/sidebar.js"></script>
+        <script src="js/directives/header.js"></script>
+        <!--<script src="js/directives/navbar.js"></script>-->
+        <script src="js/directives/chatbar.js"></script>
+        <script src="js/directives/widget.js"></script>
+
+        <!--me js-->
+        <script src="js/me-ul.js"></script>
+
+
+</div>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-package org.cai.kubo.utils;
+package kubo.common.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.security.InvalidKeyException;

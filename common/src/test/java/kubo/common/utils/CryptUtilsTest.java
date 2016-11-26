@@ -1,4 +1,4 @@
-package org.cai.kubo.utils;
+package kubo.common.utils;
 
 import junit.framework.TestCase;
 
@@ -8,7 +8,8 @@ import junit.framework.TestCase;
 public class CryptUtilsTest extends TestCase {
 
     public void testEncrypt(){
-        assertNotNull( CryptUtils.getInstance().encrypt("helloWorld"));
+        assertNotNull( CryptUtils.getInstance().encrypt("jxyz"));
+        System.out.println(CryptUtils.getInstance().encrypt("jxyz"));
     }
 
 }

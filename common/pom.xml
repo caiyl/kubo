@@ -25,5 +25,18 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- UTILS -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
     </dependencies>
 </project>
