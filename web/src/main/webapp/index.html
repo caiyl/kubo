@@ -13,6 +13,11 @@
     <link type="text/css" rel="stylesheet" href="css/orange-blue.css">
     <link type="text/css" rel="stylesheet" href="metismenu/dist/metisMenu.min.css">
     <link type="text/css" rel="stylesheet" href="Font-Awesome-master/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-datepicker.min.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-combined.min.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+
 
 </head>
 
@@ -73,7 +78,9 @@
                     </ul>
                 </li>
                 <li class="dropdown topbar-user">
-                    <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">John Doe</span>&nbsp;<span class="caret"></span>
+                    <a data-hover="dropdown" href="#/views/login" class="dropdown-toggle">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/48.jpg" alt="" class="img-responsive img-circle" />
+                        &nbsp;<span class="hidden-xs">John Doe{{$root.userNameCn}}</span>&nbsp;<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-user pull-right">
                         <li><a href="extra-profile.html"><i class="fa fa-user"></i>My Profile</a>
@@ -148,11 +155,11 @@
                 </li>
 
 
-                <li><a href="#"><i class="fa fa-th-list fa-fw"><div class="icon-bg bg-blue"></div></i><span class="menu-title">Tables</span><span class="fa arrow"></span></a>
+                <li><a href="#"><i class="fa fa-th-list fa-fw"><div class="icon-bg bg-blue"></div></i><span class="menu-title">流程管理</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a ><i class="fa fa-th-large"></i><span class="submenu-title">Basic Tables</span></a>
+                        <li><a href="#/views/workflow/process-list"><i class="fa fa-th-large"></i><span class="submenu-title">流程定义及部署管理</span></a>
                         </li>
-                        <li><a href="table-responsive.html"><i class="fa fa-tablet"></i><span class="submenu-title">Responsive Tables</span></a>
+                        <li><a href="#/login"><i class="fa fa-tablet"></i><span class="submenu-title">Responsive Tables</span></a>
                         </li>
                         <li><a href="table-action.html"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">Action Tables</span></a>
                         </li>
@@ -172,9 +179,9 @@
                     </ul>
                 </li>
 
-                <li><a href="#"><i class="fa fa-file-o fa-fw"><div class="icon-bg bg-yellow"></div></i><span class="menu-title">Pages</span><span class="fa arrow"></span></a>
+                <li><a href="#"><i class="fa fa-file-o fa-fw"><div class="icon-bg bg-yellow"></div></i><span class="menu-title">考勤管理</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="page-gallery.html"><i class="fa fa-suitcase"></i><span class="submenu-title">Gallery</span></a>
+                        <li><a href="#/views/leave/leaveApply"><i class="fa fa-suitcase"></i><span class="submenu-title">请假申请</span></a>
                         </li>
                         <li><a href="page-timeline.html"><i class="fa fa-steam"></i><span class="submenu-title">Timeline</span></a>
                         </li>
@@ -203,7 +210,7 @@
         <!--BEGIN TITLE & BREADCRUMB PAGE-->
         <!--END TITLE & BREADCRUMB PAGE-->
         <!--BEGIN CONTENT-->
-        <div class="page-content" ui-view>
+        <div class="page-content" ng-view="">
             context
         </div>
         <!--END CONTENT-->
@@ -215,29 +222,20 @@
     <!--END FOOTER-->
     <!--END PAGE WRAPPER-->
         <script src="js/jquery-3.1.1.js"></script>
-        <script src="js/angular/angular.min.js"></script>
+        <script src="plugin/jquery-migrate-1.2.1.min.js"></script>
+        <script src="plugin/bootstrap-datepicker.min.js"></script>
+        <script src="plugin/bootstrap-datepicker.zh-CN.min.js"></script>
+        <script src="angular-1.5.8/angular.min.js"></script>
+        <script src="angular-1.5.8/angular-route.min.js"></script>
         <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
         <script src="metismenu/dist/metisMenu.min.js"></script>
-
-        <script src="js/ui-bootstrap/bootstrap-select.js"></script>
-        <script src="js/ui-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script src="js/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="js/angular/angular-dialogs.min.js"></script>
-        <script src="js/angular-ocLazyLoad/ocLazyLoad.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/services.js"></script>
-        <script src="js/controller.js"></script>
-        <script src="js/directives/loading.js"></script>
-        <script src="js/directives/skin.js"></script>
-        <script src="js/directives/sidebar.js"></script>
-        <script src="js/directives/header.js"></script>
-        <!--<script src="js/directives/navbar.js"></script>-->
-        <script src="js/directives/chatbar.js"></script>
-        <script src="js/directives/widget.js"></script>
-
+        <script src="plugin/moment.min.js"></script>
+        <script src="plugin/moment-with-locales.min.js"></script>
+        <script src="plugin/bootstrap-datetimepicker.min.js"></script>
         <!--me js-->
         <script src="js/me-ul.js"></script>
-
+        <script src="js/services.js"></script>
+        <script src="js/app.js"></script>
 
 </div>
 </body>

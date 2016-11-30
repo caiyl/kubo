@@ -1,26 +1,22 @@
 package kubo.control;
 
+import kubo.activiti.form.dto.Process;
+import kubo.common.utils.DateUtils;
 import kubo.common.utils.FilenameUtils;
-import kubo.dao.UserMapper;
+import kubo.common.result.ResultBean;
 import kubo.domain.User;
 import kubo.service.UserService;
 import kubo.utils.WorkflowUtils;
-import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.repository.ProcessDefinitionQuery;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +34,9 @@ public class WorkflowCtrl {
 	@Autowired
 	private RepositoryService repositoryService;
 
+	@Autowired
+	private UserService userService;
+
 	public WorkflowCtrl() {
 	}
 
@@ -47,7 +46,7 @@ public class WorkflowCtrl {
 	 *
 	 * @return
 	 */
-	@RequestMapping(method=RequestMethod.POST, value="/process-list", consumes = "application/json")
+	@RequestMapping(value="/process-list", consumes = "application/json")
 	@ResponseBody
 	public Map<String,Object> processList() {
     /*
@@ -64,15 +63,29 @@ public class WorkflowCtrl {
 		for (ProcessDefinition processDefinition : processDefinitionList) {
 			String deploymentId = processDefinition.getDeploymentId();
 			Deployment deployment = repositoryService.createDeploymentQuery().deploymentId(deploymentId).singleResult();
-			objects.add(new Object[]{processDefinition, deployment});
+			objects.add(new Object[]{new Process( processDefinition.getId(),
+					processDefinition.getDeploymentId(),
+					processDefinition.getName(),
+					processDefinition.getKey(),
+					processDefinition.getVersion()+"",
+					processDefinition.getResourceName(),
+					processDefinition.getDiagramResourceName(),
+					processDefinition.isSuspended()?"是":"否"
+					), new kubo.activiti.form.dto.Deployment(
+					DateUtils.format(deployment.getDeploymentTime(),DateUtils.FORMAT_FULL))});
 		}
-		ret.put("data",objects);
+
+
+	/*	Gson gson = new Gson();
+		String s = gson.toJson(objects);*/
+		ret.put("result",objects);
 		logger.info("query success");
 		return ret;
 	}
 
 	@RequestMapping(value = "/deploy")
-	public String deploy(@RequestParam(value = "file", required = false) MultipartFile file) {
+	@ResponseBody
+	public ResultBean deploy(@RequestParam(value = "file", required = false) MultipartFile file) {
 		// TODO: 2016/11/25 org.activiti.engine.ActivitiIllegalArgumentException: unknown type 'users' countersignUsers 
 		String exportDir ="/tmp/kft-activiti-demo";
 		String fileName = file.getOriginalFilename();
@@ -100,7 +113,19 @@ public class WorkflowCtrl {
 			logger.error("error on deploy process, because of file input stream", e);
 		}
 
-		return "redirect:/workflow/process-list";
+		return ResultBean.getNewResultBean().setSuccess(true);
+	}
+
+	/**
+	 * 删除部署的流程，级联删除流程实例
+	 *
+	 * @param deploymentId 流程部署ID
+	 */
+	@RequestMapping(value = "/delete", consumes = "application/json")
+	@ResponseBody
+	public ResultBean delete(@RequestParam("deploymentId") String deploymentId) {
+		repositoryService.deleteDeployment(deploymentId, true);
+		return ResultBean.getNewResultBean().setSuccess(true);
 	}
 
 }

@@ -1,0 +1,59 @@
+
+<div style="text-align: right;padding: 2px 1em 2px">
+    <div id="message" class="info" style="display:inline;"><b>提示：</b>点击xml或者png链接可以查看具体内容！</div>
+    <a ng-click="showDeploy()" class="btn btn-info btn-sm"><i class="fa fa-plus"></i>&nbsp;部署流程</a>
+</div>
+
+<div ng-show="isShow"  class="container-fluid">
+    <fieldset class="row">
+        <div class="col-md-8">
+            <legend >部署新流程</legend>
+            <div ><b>支持文件格式：</b>zip、bar、bpmn、bpmn20.xml</div>
+            <form action="/web/workflow/deploy.do" method="post" enctype="multipart/form-data">
+
+                    <input type="file"  name="file"  class="btn btn-success fileinput-button" />
+                </span></span>
+                <a class="btn btn-info btn-sm" ng-click="deploySave()"><i class="fa fa-upload"></i><span class="submenu-title">部署</span></a>
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+
+<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+    <thead>
+    <tr>
+        <th width="3%">ProcessDefinitionId</th>
+        <th width="9%">DeploymentId</th>
+        <th>名称</th>
+        <th width="10%">KEY</th>
+        <th width="5%">版本号</th>
+        <th width="7%">XML</th>
+        <th width="12%">图片</th>
+        <th width="10%">部署时间</th>
+        <th width="6%">是否挂起</th>
+        <th width="15%">操作</th>
+
+
+    </tr>
+    <tbody>
+
+    <tr ng-repeat="obj in processList">
+        <td>{{obj[0].id}}</td>
+        <td>{{obj[0].deploymentId}}</td>
+        <td>{{obj[0].name}}</td>
+        <td>{{obj[0].key}}</td>
+        <td>{{obj[0].version}}</td>
+        <td>{{obj[0].resourceName}}</td>
+        <td>{{obj[0].diagramResourceName}}</td>
+        <td>{{obj[1].deploymentTime}}</td>
+        <td>{{obj[0].suspended}}</td>
+        <td>
+            <button type="button" class="btn btn-default btn-xs" href='/web/workflow/process/convert-to-model/${process.id}'><i class="fa fa-edit"></i>&nbsp; 转换为Model</button>&nbsp;
+            <button type="button" class="btn btn-danger btn-xs" ng-click="delete(obj[0].deploymentId)"><i class="fa fa-trash-o"></i>&nbsp; 删除</button>
+        </td>
+    </tr>
+
+    </tbody>
+    </thead>
+</table>

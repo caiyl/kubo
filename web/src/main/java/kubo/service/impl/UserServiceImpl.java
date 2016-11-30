@@ -23,7 +23,6 @@ public class UserServiceImpl extends AbstractService<User, Integer> implements U
 	public User getUser() {
 		User user = new User();
 		// 查询数据
-		user.setName("Jessica");
 		user.setPassword("123");
 		return user;
 	}
@@ -32,12 +31,9 @@ public class UserServiceImpl extends AbstractService<User, Integer> implements U
 		return selectByPrimaryKey(id);
 	}
 
-	public User getUserByName(String name) {
+	public List<User> getUserByName(String name) {
+		return userMapper.selectByUserName(name);
 
-
-
-
-		return null;
 	}
 
 	@Override
@@ -48,7 +44,6 @@ public class UserServiceImpl extends AbstractService<User, Integer> implements U
         User user2 = new User();
         
         user2.setPassword("1");
-        user2.setRoleid(1);
 //		insertSelective(user2);
 //		int a = 4/0;
 		return 1;

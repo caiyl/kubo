@@ -1,0 +1,48 @@
+<div class="panel-body pan">
+    <form action="#" class="form-horizontal">
+        <div class="form-body pal">
+            <div class="form-group">
+                <label for="inputUsername" class="col-md-3 control-label">请假类型 <span class='require'>*</span>
+                </label>
+                <div class="col-md-9">
+                        <select class="form-control">
+                            <option>Gender</option>
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                            <option value="2">Other</option>
+                        </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">开始时间 <span class='require'>*</span>
+                </label>
+                <div class="col-md-9">
+                    <div class="input-group datetimepicker-default date">
+                        <input type="text" name="datetime" class="form-control datetimepicker" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress" class="col-md-3 control-label">结束时间 <span class='require'>*</span>
+                </label>
+                <div class="col-md-9">
+                    <div class="input-group datetimepicker-default date">
+                        <input type="text" name="datetime" class="form-control datetimepicker" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mbn">
+                <label for="inputContent" class="col-md-3 control-label">请假内容</label>
+                <div class="col-md-9">
+                    <textarea id="inputContent" rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button type="submit" class="btn btn-primary">Send</button>&nbsp;
+                <button type="button" class="btn btn-green">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
