@@ -1,0 +1,15 @@
+body{
+    background-color: whitesmoke;
+}
+.div_border{
+    border: solid;
+    border-color: #761c19;
+}
+/*div主色调*/
+.div_main_color{
+    background-color: #0f0f0f;
+}
+.div_right{
+    background-image: url("images/right_img.jpg");
+}
+
